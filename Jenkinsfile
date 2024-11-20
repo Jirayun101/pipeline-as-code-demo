@@ -3,7 +3,7 @@ pipeline {
 
     agent {
         node {
-            label 'SLAVE01'
+            label 'AGENT-01'
         }
     }
 
@@ -38,7 +38,7 @@ pipeline {
             steps {
                 checkout([
                     $class: 'GitSCM', 
-                    branches: [[name: '*/master']], 
+                    branches: [[name: '*/main']], 
                     userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
                 ])
             }
