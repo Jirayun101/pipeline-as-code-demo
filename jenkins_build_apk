@@ -4,7 +4,13 @@ try {
     node {
       
         stage('Preparation') { 
-            git credentialsId: 'AAAAC3NzaC1lZDI1NTE5AAAAIFq8pNQ6uAF9uNXepjkbwdfwFUd3aVcIuF+AXCowTIjd', url: 'https://github.com/Mobile-Telematics/telematicsSDK-demoapp-react/'
+            steps {
+                checkout([
+                    $class: 'GitSCM', 
+                    branches: [[name: '*/main']], 
+                    userRemoteConfigs: [[url: 'https://github.com/Mobile-Telematics/telematicsSDK-demoapp-react.git']]
+                ])
+            }
         }
      
         stage('Dependencies') {
