@@ -1,3 +1,4 @@
+
 def err = null
 try {
   
@@ -6,6 +7,8 @@ try {
         stage('Preparation') { 
             steps {
                 checkout([
+                    import hudson.plugins.git.*
+                    import hudson.plugins.git.extensions.impl.*
                     $class: 'GitSCM', 
                     branches: [[name: '*/main']], 
                     userRemoteConfigs: [[url: 'https://github.com/Mobile-Telematics/telematicsSDK-demoapp-react.git']]
